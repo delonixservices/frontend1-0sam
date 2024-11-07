@@ -1,0 +1,160 @@
+<div class="navWrapper">
+  <nav [ngClass]="{'fixed-top': isHomePage()}" class="navbar navbar-expand-md navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/">
+        <!-- <h3>TripBazaar</h3> -->
+        <div class="nav_logo">
+          <img src="assets/logo.png" alt="tripbazaar">
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" data-toggle="collapse"
+        data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div [ngbCollapse]="!isCollapsed" class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav mx-auto m-0">
+
+          <!-- CAB -->
+
+          <li class="nav-item text-uppercase">
+            <a class="nav-link" href="https://holidays-holidays.qbthl0.easypanel.host/" routerLinkActive="active">Cab</a>
+          </li>
+
+          <!-- bus -->
+          <li class="nav-item text-uppercase">
+            <a class="nav-link" href="https://holidays-holidays.qbthl0.easypanel.host/" routerLinkActive="active">Bus</a>
+          </li>
+          
+          
+          <!-- Flights -->
+          <li class="nav-item text-uppercase">
+            <a class="nav-link" routerLink="/flights" routerLinkActive="active">Flights</a>
+          </li>
+          <!-- <li class="nav-item text-uppercase">
+            <a class="nav-link" routerLink="/hotels" routerLinkActive="active">Hotels</a>
+          </li> -->
+
+          <li class="nav-item text-uppercase">
+            <a class="nav-link" routerLink="/hotels" routerLinkActive="active">Hotels</a>
+          </li>
+
+          <!-- holidays  -->
+
+          <!-- <li class="nav-item text-uppercase">
+            <a class="nav-link" href="https://holidays.tripbazaar.in" routerLinkActive="active">Holidays</a>
+          </li> -->
+          <li class="nav-item text-uppercase">
+            <a class="nav-link" href="https://holidays-holidays.qbthl0.easypanel.host/" target="_blank" routerLinkActive="active">Holidays</a>
+          </li>
+          
+          <!-- forex -->
+
+          <li class="nav-item text-uppercase">
+            <a class="nav-link" href="https://holidays-holidays.qbthl0.easypanel.host/" routerLinkActive="active">Forex</a>
+          </li>
+
+          <!-- gift a tour  -->
+
+          <li class="nav-item text-uppercase">
+            <a class="nav-link" href="https://holidays-holidays.qbthl0.easypanel.host/" routerLinkActive="active">Gift a tour</a>
+          </li>
+
+          <!-- contact us -->
+
+          <li class="nav-item text-uppercase">
+            <a class="nav-link" href="https://holidays-holidays.qbthl0.easypanel.host/" routerLinkActive="active">Contact Us</a>
+          </li>
+
+          <li class="nav-item" ngbDropdown>
+            <a ngbDropdownToggle class="nav-link" id="myaccount" aria-haspopup="true" aria-expanded="false">
+              <span>My Account</span>
+              <span class="carat"></span>
+            </a>
+            <div ngbDropdownMenu aria-labelledby="myaccount">
+              <a *ngIf="isLoggedIn!==true" class="dropdown-item" routerLink="/account/login">Login</a>
+              <a *ngIf="isLoggedIn!==true" class="dropdown-item" routerLink="/account/register">Signup</a>
+              <a class="dropdown-item" *ngIf="isLoggedIn===true" routerLink="/account/dashboard">Dashboard</a>
+              <a class="dropdown-item" *ngIf="isLoggedIn===true" (click)="logout()">Logout</a>
+            </div>
+          </li>
+
+          <li ngbDropdown *ngIf="isLoggedIn===true" class="nav-item">
+            <a ngbDropdownToggle class="nav-link" id="userprofile" aria-haspopup="true"
+              aria-expanded="false">Profile</a>
+            <div ngbDropdownMenu class="mr-auto" aria-labelledby="recentsearch">
+              <a class="dropdown-item" routerLink="/account/profile">Profile</a>
+            </div>
+          </li>
+          <li *ngIf="isLoggedIn===true" class="nav-item">
+            <!-- <a class="nav-link" routerLink="/account/dashboard">{{user.name}}</a> -->
+            <a class="nav-link active">{{user.name}}</a>
+          </li>
+
+
+          
+
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+</div>
+
+<!-- 
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+	<div class="container">
+		<a class="navbar-brand" routerLink="/">
+			<h1>TripBazaar</h1>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav ml-auto ">
+				<li class="nav-item dropdown active">
+					<a class="nav-link dropdown-toggle" id="myaccount" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">
+						<span>My Account</span>
+						<span class="carat"></span>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="myaccount">
+						<a *ngIf="isLoggedIn!==true" class="dropdown-item" routerLink="/login">Login</a>
+						<a *ngIf="isLoggedIn!==true" class="dropdown-item" routerLink="/register">Signup</a>
+						<a *ngIf="isLoggedIn===true" class="dropdown-item" (click)="logout()">Logout</a>
+					</div>
+				</li>
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="supportmenu" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">Support <span class="carat"></span></a>
+					<div class="dropdown-menu" aria-labelledby="supportmenu">
+						<a class="dropdown-item" routerLink="/contact">Contact Us</a>
+						<a class="dropdown-item" href="#">Submit Ticket</a>
+					</div>
+				</li>
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="recentsearch" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">Recent Search</a>
+					<div class="dropdown-menu mr-auto" aria-labelledby="recentsearch">
+						<a class="dropdown-item" href="#">Things you view here.</a>
+					</div>
+				</li>
+				<li *ngIf="isLoggedIn===true" class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="userprofile" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">Profile</a>
+					<div class="dropdown-menu mr-auto" aria-labelledby="recentsearch">
+						<a class="dropdown-item" routerLink="/profile">Profile</a>
+					</div>
+				</li>
+				<li *ngIf="isLoggedIn===true" class="nav-item">
+					<a href="#" class="nav-link" routerLink="/dashboard">{{user.name}}</a>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+</nav> -->

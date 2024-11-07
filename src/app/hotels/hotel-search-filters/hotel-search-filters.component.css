@@ -1,0 +1,20 @@
+.filters_sidebar {
+  width: 100%;
+}
+.selected-filter {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #f0f0f0; 
+  cursor: pointer;
+}
+.selected-filter span {
+  margin-left: 5px; 
+  color: #888; 
+}
+
+.clear-filter{
+  cursor: pointer;
+} 
