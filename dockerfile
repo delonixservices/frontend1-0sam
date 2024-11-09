@@ -11,3 +11,9 @@ FROM nginx:alpine
 COPY --from=node /app/dist /usr/share/nginx/html
 EXPOSE 80
 HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD curl -f http://localhost/ || exit 1
+
+
+
+# any problem refer this 
+
+# https://www.youtube.com/watch?v=ah0cmx2wv0s&t=608s
