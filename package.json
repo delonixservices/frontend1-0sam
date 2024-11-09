@@ -6,8 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "start2": "ng serve --host 0.0.0.0   --port 4200 --disable-host-check ",
-    "build": "npm run build",
-
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint --force",
     "e2e": "ng e2e"
